@@ -81,6 +81,20 @@ export default class ComplexNumber extends ComplexNumberRecord {
     return this.scale(1 / mod);
   }
 
+  dot(complex) {
+    const { real: a, imaginary: b } = this.toObject();
+    const { real: c, imaginary: d } = complex.toObject();
+
+    return a * c + b * d;
+  }
+
+  project(complex) {
+    const d = this.dot(complex);
+
+    return complex
+      .scale(d / complex.modulusSquared());
+  }
+
   times(...args) {
     return this.multiply.apply(this, args);
   }

@@ -195,7 +195,29 @@ describe('ComplexNumbers', function() {
 
       test.real.should.equal(-7);
       test.imaginary.should.equal(22);
+    });
+  });
 
-    })
-  })
+  describe('#dot(c)', function() {
+    it('should find the dot product between two complex numbers', function() {
+      const c1 = new ComplexNumber({ real: -4, imaginary: -9});
+      const c2 = new ComplexNumber({ real: -1, imaginary: 2});
+
+      const test = c1.dot(c2);
+
+      test.should.equal(-14);
+    });
+  });
+
+  describe('#project(c)', function() {
+    it('should project one complex onto the other', function() {
+      const c1 = new ComplexNumber({ real: 2, imaginary: 1});
+      const c2 = new ComplexNumber({ real: -3, imaginary: 4});
+
+      const test = c1.project(c2);
+
+      test.real.should.equal(6 / 25);
+      test.imaginary.should.equal(-8 / 25);
+    });
+  });
 });
